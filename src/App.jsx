@@ -6,7 +6,6 @@ import Episode from "./components/Episode";
 import Preload from "./components/Preload";
 import FavCharacter from "./components/FavCharacter";
 import toast, { Toaster } from "react-hot-toast";
-import Footer from "./components/Footer";
 import Sidepanel2 from "./components/Sidepanel2";
 
 function App() {
@@ -32,7 +31,6 @@ function App() {
 
   const storedData = localStorage.getItem("favitem");
   const favoriteCharacters = storedData ? JSON.parse(storedData) : [];
-  const seasons = [1, 2, 3];
 
   const Opencharacterpage = (ch_info) => {
     setOpenCharacterInfo(true);

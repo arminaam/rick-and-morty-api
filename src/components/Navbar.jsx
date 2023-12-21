@@ -1,6 +1,7 @@
 import reactLogo from "../assets/imgs/logo.png";
 import "animate.css";
 import { StarIcon, Bars3Icon } from "@heroicons/react/24/solid";
+import { NavLink } from "react-router-dom";
 function Navbar({
   openFavoriteCharactersModal,
   setOpenEpisode,
@@ -31,14 +32,14 @@ function Navbar({
       <button className="mobile_l:hidden">
         <Bars3Icon className="w-10" />
       </button>
-      <button onClick={backtostartpagehandler}>
+      <NavLink to={"/app"} onClick={backtostartpagehandler}>
         <img
           src={reactLogo}
           className="desktop_4k:w-56 desktop_1440:w-40  desktop_1024:w-36   tablet:w-32 "
           alt=""
           srcset=""
         />
-      </button>
+      </NavLink>
       <button
         onClick={() => openFavoriteCharactersModal()}
         className="text-white flex justify-center items-center gap-3 shadow-2xl bg-[#628fe2] px-8 py-[0.7rem] rounded-full hover:bg-[#74a4fd]  desktop_4k:text-2xl desktop_1440:text-base  desktop_1024:text-xs  tablet:text-xs  max-[425px]:hidden"

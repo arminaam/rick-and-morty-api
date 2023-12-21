@@ -1,10 +1,38 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import * as React from "react";
+import * as ReactDOM from "react-dom/client";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import "./index.css";
+import ErrorPage from "./components/ErrorPage";
+import App from "./App";
+import Episode from "./components/Episode";
+import Preload from "./components/Preload";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+
+const router = createBrowserRouter([
+  {
+    path: "/app/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "?season=seasonNumber",
+        element: <Preload />,
+        children: [
+          {
+            path: "episodeid=episodeid",
+            element: <Episode />,
+          },
+        ]
+      }
+    ],
+  },
+]);
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);

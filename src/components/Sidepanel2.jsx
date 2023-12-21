@@ -9,6 +9,7 @@ import {
 } from "@heroicons/react/24/solid";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Link, useSearchParams } from "react-router-dom";
 
 function SeasonButton({
   seasonNumber,
@@ -16,8 +17,11 @@ function SeasonButton({
   isSeasonOpen,
   toggleSeasonHandler,
 }) {
+  let [searchParams, setSearchParams] = useSearchParams();
+  console.log(searchParams);
   return (
-    <button
+    <Link
+      to={`?season=${seasonNumber}`}
       className="flex items-center flex-row-reverse text-lg text-gray-400 hover:text-white"
       onClick={() => toggleSeasonHandler(seasonNumber)}
     >
@@ -30,7 +34,7 @@ function SeasonButton({
           <ChevronRightIcon className="w-[1.5rem]" />
         )}
       </div>
-    </button>
+    </Link>
   );
 }
 
@@ -43,6 +47,8 @@ function SeasonList({
   handleEpisodeClick,
   activeEpisode,
 }) {
+  let [searchParams, setSearchParams] = useSearchParams();
+  console.log(searchParams);
   return (
     <div className="flex flex-col gap-5">
       {seasons.map((seasonNumber, index) => (
@@ -59,20 +65,20 @@ function SeasonList({
           {isLoadEpisodes[seasonNumber] ? (
             <div className="flex flex-col leading-[2.5rem] ml-8">
               {episodeData[seasonNumber].map((episode) => (
-                <button
+                <Link
+                  to={`?season=${seasonNumber}&episode=${episode.id}`}
                   key={episode.id}
-                  className={`text-gray-600  hover:text-white  ${
-                    activeEpisode && activeEpisode.id === episode.id
-                      ? "text-white"
-                      : ""
-                  } `}
+                  className={`text-gray-600  hover:text-white  ${activeEpisode && activeEpisode.id === episode.id
+                    ? "text-white"
+                    : ""
+                    } `}
                   onClick={() => handleEpisodeClick(seasonNumber, episode.id)}
                 >
                   <li>
                     <span>Episode</span>
                     <span>{episode.id.toString().padStart(2, "0")}</span>
                   </li>
-                </button>
+                </Link>
               ))}
             </div>
           ) : null}
@@ -182,11 +188,10 @@ function Sidebar({
       className={`flex flex-col items-center py-8 bg-white dark:bg-gray-900 dark:border-[#4C4B63] border-l border-r border-b`}
     >
       <div
-        className={`transition-width duration-300 relative ${
-          expandsidepanel
-            ? "left-[6.3rem] bottom-[14px]"
-            : "left-[3.1rem] bottom-[14px]"
-        } `}
+        className={`transition-width duration-300 relative ${expandsidepanel
+          ? "left-[6.3rem] bottom-[14px]"
+          : "left-[3.1rem] bottom-[14px]"
+          } `}
       >
         <a
           onClick={test10}

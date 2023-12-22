@@ -17,8 +17,8 @@ function SeasonButton({
   isSeasonOpen,
   toggleSeasonHandler,
 }) {
-  let [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams);
+  // let [searchParams, setSearchParams] = useSearchParams();
+  // console.log(searchParams);
   return (
     <Link
       to={`?season=${seasonNumber}`}
@@ -48,7 +48,7 @@ function SeasonList({
   activeEpisode,
 }) {
   let [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams);
+  // console.log(searchParams);
   return (
     <div className="flex flex-col gap-5">
       {seasons.map((seasonNumber, index) => (

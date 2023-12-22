@@ -22,7 +22,7 @@ const router = createBrowserRouter([
         element: <Preload />,
         children: [
           {
-            path: "episodeid=episodeid",
+            path: "episode=episodeid",
             element: <Episode />,
           },
         ]

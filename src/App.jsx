@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import CharacterInfo from "./components/CharacterInfo";
 import "animate.css";
@@ -7,6 +7,7 @@ import Preload from "./components/Preload";
 import FavCharacter from "./components/FavCharacter";
 import toast, { Toaster } from "react-hot-toast";
 import Sidepanel2 from "./components/Sidepanel2";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
 function App() {
   const [openSidepanel, setOpenSidepanel] = useState(true);
@@ -74,6 +75,43 @@ function App() {
     setExpandSidePanel(!expandsidepanel);
   }
 
+  useEffect(() => {
+    function handleResize() {
+      const screenWidth = window.innerWidth;
+      if (screenWidth <= 425) {
+        setOpenSidepanel(false);
+      } else {
+        setOpenSidepanel(true);
+      }
+    }
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  let [searchParams, setSearchParams] = useSearchParams();
+  const param = searchParams.get('season')
+  const param2 = searchParams.get('episode')
+
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      if (param) {
+        searchParams.delete('season');
+      }
+      if (param2) {
+        searchParams.delete("episode")
+      }
+      setSearchParams(searchParams);
+      // console.log("hio");
+    };
+    window.addEventListener("load", handleBeforeUnload);
+    return () => {
+      window.removeEventListener("load", handleBeforeUnload);
+    };
+  }, []);
+
   return (
     <div className="app h-screen grid">
       <Toaster />
@@ -86,11 +124,10 @@ function App() {
           setActiveEpisode={setActiveEpisode}
         />
         <div
-          className={`content grid ${
-            expandsidepanel
-              ? "grid-cols-[200px_minmax(900px,_1fr)] desktop_1024:grid-cols-[200px_minmax(0px,_1fr)] tablet:grid-cols-[200px_minmax(0px,_1fr)]"
-              : "grid-cols-[100px_minmax(900px,_1fr)] tablet:grid-cols-[100px_minmax(0px,_1fr)]"
-          } !h-[90%]  transition-width duration-300`}
+          className={`content grid ${expandsidepanel
+            ? "grid-cols-[200px_minmax(900px,_1fr)] desktop_1024:grid-cols-[200px_minmax(0px,_1fr)] tablet:grid-cols-[200px_minmax(0px,_1fr)] "
+            : "grid-cols-[100px_minmax(900px,_1fr)] tablet:grid-cols-[100px_minmax(0px,_1fr)]"
+            } !h-[90%]  transition-width duration-300`}
         >
           {openSidepanel == true ? (
             <Sidepanel2

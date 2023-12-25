@@ -14,7 +14,8 @@ import Preload from "./components/Preload";
 const router = createBrowserRouter([
   {
     path: "/app/",
-    element: <App />,
+    index:"/app/",
+    element: <App/>,
     errorElement: <ErrorPage />,
     children: [
       {

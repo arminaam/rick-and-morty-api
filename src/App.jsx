@@ -111,11 +111,11 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    window.addEventListener("resize", () => {
-      location.reload();
-    });
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("resize", () => {
+  //     location.reload();
+  //   });
+  // }, []);
 
   return (
     <div className="app h-screen grid overflow-x-hidden">

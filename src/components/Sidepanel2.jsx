@@ -9,7 +9,7 @@ import {
 } from "@heroicons/react/24/solid";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function SeasonButton({
   seasonNumber,
@@ -17,8 +17,6 @@ function SeasonButton({
   isSeasonOpen,
   toggleSeasonHandler,
 }) {
-  // let [searchParams, setSearchParams] = useSearchParams();
-  // console.log(searchParams);
   return (
     <Link
       to={`?season=${seasonNumber}`}
@@ -47,8 +45,6 @@ function SeasonList({
   handleEpisodeClick,
   activeEpisode,
 }) {
-  let [searchParams, setSearchParams] = useSearchParams();
-  // console.log(searchParams);
   return (
     <div className="flex flex-col gap-5">
       {seasons.map((seasonNumber, index) => (
@@ -186,7 +182,6 @@ function Sidebar({
     }
     if (window.innerWidth <= 641) {
       setShowEpisodeListMobile(false);
-      console.log("asdasd");
     }
   }
 

@@ -87,7 +87,6 @@ function App() {
         searchParams.delete("episode");
       }
       setSearchParams(searchParams);
-      // console.log("hio");
     };
     window.addEventListener("load", handleBeforeUnload);
     return () => {
@@ -95,13 +94,13 @@ function App() {
     };
   }, []);
 
-  const a = {
+  const window_width = {
     width: window.innerWidth,
   };
 
   useEffect(() => {
     function name(params) {
-      if (a.width <= 640) {
+      if (window_width.width <= 640) {
         setOpenSidepanel(false);
       }
     }
@@ -110,12 +109,6 @@ function App() {
       window.removeEventListener("load", name);
     };
   }, []);
-
-  // useEffect(() => {
-  //   window.addEventListener("resize", () => {
-  //     location.reload();
-  //   });
-  // }, []);
 
   return (
     <div className="app h-screen grid overflow-x-hidden">

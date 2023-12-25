@@ -51,7 +51,7 @@ function Navbar({
           />
         )}
       </button>
-      <NavLink to={"/app"} onClick={backtostartpagehandler}>
+      <NavLink to={"/"} onClick={backtostartpagehandler}>
         <img
           src={reactLogo}
           className="desktop_4k:w-56 desktop_1440:w-40  desktop_1024:w-36  tablet:w-32 sm:w-32  max-[640px]:hidden "

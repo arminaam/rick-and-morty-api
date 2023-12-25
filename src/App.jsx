@@ -29,7 +29,7 @@ function App() {
     3: false,
   });
   const [activeEpisode, setActiveEpisode] = useState(null);
-
+  const [showEpisodeListMobile, setShowEpisodeListMobile] = useState(false);
   const storedData = localStorage.getItem("favitem");
   const favoriteCharacters = storedData ? JSON.parse(storedData) : [];
 
@@ -75,17 +75,16 @@ function App() {
     setExpandSidePanel(!expandsidepanel);
   }
 
-
   let [searchParams, setSearchParams] = useSearchParams();
-  const param = searchParams.get('season')
-  const param2 = searchParams.get('episode')
+  const param = searchParams.get("season");
+  const param2 = searchParams.get("episode");
   useEffect(() => {
     const handleBeforeUnload = () => {
       if (param) {
-        searchParams.delete('season');
+        searchParams.delete("season");
       }
       if (param2) {
-        searchParams.delete("episode")
+        searchParams.delete("episode");
       }
       setSearchParams(searchParams);
       // console.log("hio");
@@ -97,28 +96,29 @@ function App() {
   }, []);
 
   const a = {
-    width: window.innerWidth
-  }
+    width: window.innerWidth,
+  };
 
   useEffect(() => {
     function name(params) {
-      if (a.width <= 425) {
-        setOpenSidepanel(false)
-        console.log("asdasd");
+      if (a.width <= 640) {
+        setOpenSidepanel(false);
       }
     }
-    window.addEventListener("load", name)
+    window.addEventListener("load", name);
     return () => {
-      window.removeEventListener('load', name);
+      window.removeEventListener("load", name);
     };
   }, []);
 
   useEffect(() => {
-    window.addEventListener("resize", () => { location.reload() })
-  }, [])
+    window.addEventListener("resize", () => {
+      location.reload();
+    });
+  }, []);
 
   return (
-    <div className="app h-screen grid">
+    <div className="app h-screen grid overflow-x-hidden">
       <Toaster />
       <div>
         <Navbar
@@ -127,12 +127,18 @@ function App() {
           setIsOpenSeason={setIsOpenSeason}
           setIsLoadEpisodes={setIsLoadEpisodes}
           setActiveEpisode={setActiveEpisode}
+          setOpenSidepanel={setOpenSidepanel}
+          setShowEpisodeListMobile={setShowEpisodeListMobile}
+          showEpisodeListMobile={showEpisodeListMobile}
         />
         <div
-          className={`content grid ${expandsidepanel
-            ? "grid-cols-[200px_minmax(900px,_1fr)] desktop_1024:grid-cols-[200px_minmax(0px,_1fr)] tablet:grid-cols-[200px_minmax(0px,_1fr)] sm:grid-cols-[200px_minmax(0px,_1fr)]"
-            : "grid-cols-[100px_minmax(900px,_1fr)] tablet:grid-cols-[100px_minmax(0px,_1fr)] sm:grid-cols-[100px_minmax(0px,_1fr)]"
-            } ${openSidepanel ? "" : "grid-cols-none"} !h-[90%]  transition-width duration-300`}
+          className={`content grid ${
+            expandsidepanel
+              ? "grid-cols-[230px_minmax(900px,_1fr)] desktop_1440:grid-cols-[230px_minmax(0px,_1fr) desktop_1024:grid-cols-[230px_minmax(0px,_1fr)] tablet:grid-cols-[230px_minmax(0px,_1fr)] sm:grid-cols-[230px_minmax(0px,_1fr)] xs:grid-cols-none vxs:grid-cols-none" 
+              : "grid-cols-[115px_minmax(900px,_1fr)] tablet:grid-cols-[115px_minmax(0px,_1fr)] sm:grid-cols-[115px_minmax(0px,_1fr)] xs:grid-cols-none vxs:grid-cols-none"
+          } 
+            openSidepanel ? "" : "grid-cols-none"
+          } !h-[90%]  transition-width duration-300`}
         >
           {openSidepanel == true ? (
             <Sidepanel2
@@ -147,14 +153,21 @@ function App() {
               setIsLoadEpisodes={setIsLoadEpisodes}
               activeEpisode={activeEpisode}
               setActiveEpisode={setActiveEpisode}
+              setShowEpisodeListMobile={setShowEpisodeListMobile}
+              showEpisodeListMobile={showEpisodeListMobile}
             />
           ) : null}
-          <div className={`flex justify-center items-center`}>
+          <div
+            className={` ${
+              showEpisodeListMobile ? "hidden" : "flex"
+            } justify-center items-center`}
+          >
             {openepisode == true ? (
               <Episode
                 episode={episode}
                 Opencharacterpage={Opencharacterpage}
                 isLoadEpisodes={isLoadEpisodes}
+                expandsidepanel={expandsidepanel}
               />
             ) : (
               <Preload openSidepanel={openSidepanel} />

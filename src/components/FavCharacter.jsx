@@ -11,7 +11,7 @@ function FavCharacter({
         onClick={() => closeFavoriteCharactersModal()}
         className="modal_backdrop fixed top-0 left-0 w-full h-full bg-gray-600 bg-opacity-70 flex items-center justify-center z-10"
       ></div>
-      <div className="modal_content overflow-y-auto fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#C3C3C3] rounded-xl p-8 z-20 h-[40rem] min-[2560px]:w-[77rem] min-[1440px]:w-[66rem] lg:w-[55rem]">
+      <div className="modal_content overflow-y-auto fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#C3C3C3] rounded-xl p-8 z-20 h-[40rem] min-[2560px]:w-[77rem] min-[1440px]:w-[66rem] lg:w-[55rem] tablet:w-[44rem] mobile_l:w-[26rem] xs:w-[23rem] vxs:w-[19.5rem]">
         <div>
           <button onClick={() => closeFavoriteCharactersModal()}>
             <XCircleIcon className="w-12 cursor-pointer text-gray-500" />
@@ -25,7 +25,7 @@ function FavCharacter({
         <div
           className={`${
             favoriteCharacterss.length !== 0
-              ? "grid grid-cols-5 justify-items-center gap-x-4 gap-y-7 pt-5"
+              ? "grid desktop_4k:grid-cols-4  desktop_1440:grid-cols-4 desktop_1024:grid-cols-4 tablet:grid-cols-3 sm:grid-cols-3  min-[640px]:grid-cols-3 mobile_l:grid-cols-2 xs:grid-cols-1 vxs:grid-cols-1 justify-items-center gap-x-4 gap-y-7 pt-5"
               : "flex h-[70%] items-center justify-center"
           }`}
         >

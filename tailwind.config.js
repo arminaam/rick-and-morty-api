@@ -7,16 +7,17 @@ export default {
         layout: "80%  20%",
       },
       screens: {
-        sm:"640px",
+        vxs: "320px",
+        xs: "375px",
+        sm: "641px",
         md: "768px",
         lg: "1024px",
         xl: "1440px",
       },
     },
     screens: {
-
       mobile_l: "425px",
-
+      
       tablet: "768px",
       // => @media (min-width: 640px) { ... }
 

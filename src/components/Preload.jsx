@@ -3,7 +3,7 @@ import sticker3 from "../assets/imgs/sticker3.png";
 import "animate.css";
 function Preload({ openSidepanel }) {
   return (
-    <div className="preload flex justify-center items-center flex-col-reverse gap-2 animate__animated animate__fadeInRight">
+    <div className="preload flex justify-center items-center flex-col-reverse gap-2">
       {openSidepanel ? (
         <span className="text-t-white min-[2560px]:text-[1.75rem] min-[1440px]:text-[1.25rem]  min-[1024px]:text-[1rem] font-semibold">
           Choose a season to have a better life

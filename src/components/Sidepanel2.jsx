@@ -68,10 +68,11 @@ function SeasonList({
                 <Link
                   to={`?season=${seasonNumber}&episode=${episode.id}`}
                   key={episode.id}
-                  className={`text-gray-600  hover:text-white  ${activeEpisode && activeEpisode.id === episode.id
-                    ? "text-white"
-                    : ""
-                    } `}
+                  className={`text-gray-600  hover:text-white  ${
+                    activeEpisode && activeEpisode.id === episode.id
+                      ? "text-white"
+                      : ""
+                  } `}
                   onClick={() => handleEpisodeClick(seasonNumber, episode.id)}
                 >
                   <li>
@@ -100,6 +101,8 @@ function Sidebar({
   setIsOpenSeason,
   activeEpisode,
   setActiveEpisode,
+  showEpisodeListMobile,
+  setShowEpisodeListMobile,
 }) {
   const [episodeData, setEpisodeData] = useState({ 1: [], 2: [], 3: [] });
   function test1() {
@@ -181,17 +184,24 @@ function Sidebar({
       setOpenEpisode(true);
       setActiveEpisode(foundEpisode);
     }
+    if (window.innerWidth <= 641) {
+      setShowEpisodeListMobile(false);
+      console.log("asdasd");
+    }
   }
 
   return (
     <div
-      className={`flex flex-col items-center py-8 bg-white dark:bg-gray-900 dark:border-[#4C4B63] border-l border-r border-b`}
+      className={` ${
+        showEpisodeListMobile ? "flex items-baseline" : "max-sm:hidden"
+      }  flex-col items-center py-8 bg-white dark:bg-gray-900 dark:border-[#4C4B63] border-l border-r border-b`}
     >
       <div
-        className={`transition-width duration-300 relative ${expandsidepanel
-          ? "left-[6.3rem] bottom-[14px]"
-          : "left-[3.1rem] bottom-[14px]"
-          } `}
+        className={`transition-width duration-300 relative max-sm:hidden ${
+          expandsidepanel
+            ? "left-[13.3rem] bottom-[14px]"
+            : "left-[6.1rem] bottom-[14px]"
+        } `}
       >
         <a
           onClick={test10}
@@ -205,7 +215,7 @@ function Sidebar({
           )}
         </a>
       </div>
-      <div>
+      <div className={`${expandsidepanel ? "" : "pr-6"}`}>
         {expandsidepanel ? (
           <SeasonList
             seasons={[1, 2, 3]}

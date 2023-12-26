@@ -134,3 +134,5 @@ function Charatcter({ ch_info, Opencharacterpage }) {
     </div>
   );
 }
+
+

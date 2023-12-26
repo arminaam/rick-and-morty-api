@@ -103,6 +103,17 @@ function App() {
     };
   }, [param, param2, searchParams, setOpenSidepanel]);
 
+  useEffect(() => {
+    function name(params) {
+      location.reload();
+    }
+    window.addEventListener("resize", name);
+
+    return () => {
+      window.removeEventListener("resize", name);
+    };
+  }, []);
+
   return (
     <div className="app h-screen grid overflow-x-hidden">
       <Toaster />
@@ -116,6 +127,7 @@ function App() {
           setOpenSidepanel={setOpenSidepanel}
           setShowEpisodeListMobile={setShowEpisodeListMobile}
           showEpisodeListMobile={showEpisodeListMobile}
+          setExpandSidePanel={setExpandSidePanel}
         />
         <div
           className={`content grid ${

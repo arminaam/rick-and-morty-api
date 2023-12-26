@@ -11,6 +11,7 @@ function Navbar({
   setOpenSidepanel,
   setShowEpisodeListMobile,
   showEpisodeListMobile,
+  setExpandSidePanel
 }) {
   function backtostartpagehandler(params) {
     setActiveEpisode(null);
@@ -45,6 +46,7 @@ function Navbar({
           <Bars3Icon
             onClick={() => {
               setOpenSidepanel(true);
+              setExpandSidePanel(true)
               setShowEpisodeListMobile(true);
             }}
             className="w-10"

@@ -123,7 +123,7 @@ function App() {
               ? "grid-cols-[230px_minmax(900px,_1fr)] desktop_1440:grid-cols-[230px_minmax(0px,_1fr) desktop_1024:grid-cols-[230px_minmax(0px,_1fr)] tablet:grid-cols-[230px_minmax(0px,_1fr)] sm:grid-cols-[230px_minmax(0px,_1fr)] xs:grid-cols-none vxs:grid-cols-none"
               : "grid-cols-[115px_minmax(900px,_1fr)] tablet:grid-cols-[115px_minmax(0px,_1fr)] sm:grid-cols-[115px_minmax(0px,_1fr)] xs:grid-cols-none vxs:grid-cols-none"
           } 
-          !h-[90%] pt-[5.5rem] transition-width duration-300`}
+          !h-[100%] pt-[5.5rem] transition-width duration-300`}
         >
           {openSidepanel == true && (
             <Sidepanel2

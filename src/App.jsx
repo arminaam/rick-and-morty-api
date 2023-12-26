@@ -89,26 +89,19 @@ function App() {
       setSearchParams(searchParams);
     };
     window.addEventListener("load", handleBeforeUnload);
-    return () => {
-      window.removeEventListener("load", handleBeforeUnload);
-    };
-  }, []);
 
-  const window_width = {
-    width: window.innerWidth,
-  };
-
-  useEffect(() => {
-    function name(params) {
-      if (window_width.width <= 640) {
+    const handleWindowSize = () => {
+      if (window.innerWidth <= 640) {
         setOpenSidepanel(false);
       }
-    }
-    window.addEventListener("load", name);
-    return () => {
-      window.removeEventListener("load", name);
     };
-  }, []);
+    window.addEventListener("load", handleWindowSize);
+
+    return () => {
+      window.removeEventListener("load", handleBeforeUnload);
+      window.removeEventListener("load", handleWindowSize);
+    };
+  }, [param, param2, searchParams, setOpenSidepanel]);
 
   return (
     <div className="app h-screen grid overflow-x-hidden">
@@ -127,13 +120,12 @@ function App() {
         <div
           className={`content grid ${
             expandsidepanel
-              ? "grid-cols-[230px_minmax(900px,_1fr)] desktop_1440:grid-cols-[230px_minmax(0px,_1fr) desktop_1024:grid-cols-[230px_minmax(0px,_1fr)] tablet:grid-cols-[230px_minmax(0px,_1fr)] sm:grid-cols-[230px_minmax(0px,_1fr)] xs:grid-cols-none vxs:grid-cols-none" 
+              ? "grid-cols-[230px_minmax(900px,_1fr)] desktop_1440:grid-cols-[230px_minmax(0px,_1fr) desktop_1024:grid-cols-[230px_minmax(0px,_1fr)] tablet:grid-cols-[230px_minmax(0px,_1fr)] sm:grid-cols-[230px_minmax(0px,_1fr)] xs:grid-cols-none vxs:grid-cols-none"
               : "grid-cols-[115px_minmax(900px,_1fr)] tablet:grid-cols-[115px_minmax(0px,_1fr)] sm:grid-cols-[115px_minmax(0px,_1fr)] xs:grid-cols-none vxs:grid-cols-none"
           } 
-            openSidepanel ? "" : "grid-cols-none"
           } !h-[90%]  transition-width duration-300`}
         >
-          {openSidepanel == true ? (
+          {openSidepanel == true && (
             <Sidepanel2
               test10={test10}
               expandsidepanel={expandsidepanel}
@@ -149,7 +141,7 @@ function App() {
               setShowEpisodeListMobile={setShowEpisodeListMobile}
               showEpisodeListMobile={showEpisodeListMobile}
             />
-          ) : null}
+          )}
           <div
             className={` ${
               showEpisodeListMobile ? "hidden" : "flex"
@@ -166,7 +158,7 @@ function App() {
               <Preload openSidepanel={openSidepanel} />
             )}
           </div>
-          {openCharacterInfo ? (
+          {openCharacterInfo && (
             <CharacterInfo
               CharacterInfoo={CharacterInfoo}
               handleAddFavoriteCharacter={handleAddFavoriteCharacter}
@@ -174,8 +166,8 @@ function App() {
                 handleAddFavoriteCharacterAndNotify
               }
             />
-          ) : null}
-          {openFavModal ? (
+          )}
+          {openFavModal && (
             <FavCharacter
               closeFavoriteCharactersModal={closeFavoriteCharactersModal}
               handleRemoveFavoriteCharacterAndNotify={
@@ -183,7 +175,7 @@ function App() {
               }
               favoriteCharacterss={favoriteCharacters}
             />
-          ) : null}
+          )}
         </div>
       </div>
     </div>

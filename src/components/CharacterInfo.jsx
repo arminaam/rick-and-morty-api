@@ -84,7 +84,7 @@ function CharacterInfo({
           <div className="rounded-lg min-[2560px]:w-[65rem]  min-[1440px]:w-[54rem] min-[1024px]:w-[48rem] tablet:w-[37rem] sm:w-[37rem] min-[640px]:w-[37rem] mobile_l:w-[24rem] xs:w-[20rem] vxs:w-[19rem]">
             <div className="desktop_4k:grid-cols-4  desktop_1440:grid-cols-4 desktop_1024:grid-cols-4 tablet:grid-cols-3 sm:grid-cols-3  min-[640px]:grid-cols-3 mobile_l:grid-cols-3 xs:grid-cols-2 vxs:grid-cols-1 grid  justify-items-center gap-y-[1.5rem] gap-x-[2rem] p-5 border border-gray-600  rounded-lg">
               {Ch_appears_Episode.map((ep) => (
-                <Test ep={ep} />
+                <Ch_Appear_Ep ep={ep} />
               ))}
             </div>
           </div>
@@ -96,7 +96,7 @@ function CharacterInfo({
 
 export default CharacterInfo;
 
-function Test({ ep }) {
+function Ch_Appear_Ep({ ep }) {
   return (
     <div className="p-4 border bg-[#4C4B63] text-white border-[#4C4B63]  desktop_4k:w-44  desktop_1440:w-44 desktop_1024:w-44 tablet:w-44 sm:w-44 min-[640px]:w-44 mobile_l:w-28 xs:w-36 vxs:w-60 flex flex-col items-center justify-center rounded-2xl">
       <span className="text-center font-bold">{ep.name.slice(0, 20)}...</span>

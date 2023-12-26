@@ -42,7 +42,7 @@ function Episode({
   }, [episode.characters]);
 
   return (
-    <div className="episode max-sm:px-0 max-sm:h-full p-8 flex flex-col justify-center items-center bg-[#C3C3C3] border-[#4C4B63] border desktop_4k:w-[98%] desktop_1440:w-[97%] desktop_1024:w-[96%] tablet:w-[96%] sm:w-[96%] max-sm:w-[100%] sm:h-[95%] max-sm:rounded-none rounded-lg shadow-2xl">
+    <div className="episode max-sm:px-0 max-sm:h-[101%] p-8 flex flex-col justify-center items-center bg-[#C3C3C3] border-[#4C4B63] border desktop_4k:w-[98%] desktop_1440:w-[97%] desktop_1024:w-[96%] tablet:w-[96%] sm:w-[96%] max-sm:w-[100%] sm:h-[95%] max-sm:rounded-none rounded-lg shadow-2xl">
       {loading ? (
         <div className="loader flex h-[90%] text-gray-700 items-center justify-center font-semibold text-xl">
           <p>

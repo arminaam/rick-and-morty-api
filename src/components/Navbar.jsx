@@ -30,7 +30,7 @@ function Navbar({
   }
   return (
     <div
-      className={`navbar fixed h-[10%] dark:bg-gray-900 border-[#4C4B63] border flex justify-between items-center px-4 shadow-2xl`}
+      className={`navbar h-[10%] dark:bg-gray-900 border-[#4C4B63] border flex justify-between items-center px-4 shadow-2xl`}
     >
       <button className="sm:hidden">
         {showEpisodeListMobile ? (

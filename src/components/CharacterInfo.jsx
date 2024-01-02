@@ -36,7 +36,7 @@ function CharacterInfo({
         onClick={() => handleAddFavoriteCharacter()}
         className="modal_backdrop fixed top-0 left-0 w-full h-full bg-gray-600 bg-opacity-70 flex items-center justify-center z-10"
       ></div>
-      <div className="modal_content flex flex-col gap-4 overflow-y-auto fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#C3C3C3]  p-14 mobile_l:p-3 xs:p-3 z-20 h-[40rem] rounded-xl min-[2560px]:w-[77rem] min-[1440px]:w-[66rem] lg:w-[55rem] tablet:w-[44rem] mobile_l:w-[26rem] xs:w-[23rem] vxs:w-[19.5rem]">
+      <div className="modal_content flex flex-col gap-4 overflow-y-auto fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#C3C3C3]  p-14 mobile_l:p-3  min-[640px]:rounded-xl  xs:p-3 z-20      min-[2560px]:h-[40rem] min-[1440px]:h-[40rem] lg:w-h-[40rem] tablet:h-[40rem] mobile_l:h-full xs:h-ful vxs:h-full        rounded-xl min-[2560px]:w-[77rem] min-[1440px]:w-[66rem] lg:w-[55rem] tablet:w-[44rem] mobile_l:w-full xs:w-full vxs:w-full">
         <div className="flex justify-center items-center flex-col gap-3">
           <div className="min-[2560px]:w-[65rem]  min-[1440px]:w-[54rem] min-[1024px]:w-[48rem] tablet:w-[37rem] sm:w-[37rem] min-[640px]:w-[37rem] mobile_l:w-[24rem] xs:w-[20rem] vxs:w-[19rem] flex justify-start">
             <button onClick={() => handleAddFavoriteCharacter()}>
